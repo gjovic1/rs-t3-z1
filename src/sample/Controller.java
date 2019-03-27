@@ -27,10 +27,12 @@ public class Controller {
                 } else {
                     Unos.getStyleClass().removeAll("poljeNijeIspravno");
                 }
+                if (!n.matches("\\d")) {
+                    Unos.setText(n.replaceAll("[^\\d]", ""));
+                }
             }
         });
     }
-
 
 
     public static int sumaCifara(int broj) {
@@ -42,11 +44,15 @@ public class Controller {
         return sum;
     }
 
-    public void print(ActionEvent actionEvent) throws InvocationTargetException {
-
-        String n = Unos.getText();
-        for (int i = 1; i < Integer.parseInt(n); i++)
-            if (i % sumaCifara(i) == 0)
-                listaIspis.getItems().add(i);
+    public int print(ActionEvent actionEvent) throws InvocationTargetException {
+        try {
+            String n = Unos.getText();
+            for (int i = 1; i < Integer.parseInt(n); i++)
+                if (i % sumaCifara(i) == 0)
+                    listaIspis.getItems().add(i);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+        return 0;
     }
 }
