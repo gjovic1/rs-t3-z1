@@ -23,6 +23,7 @@ public class Controller {
             public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
                 if (n.isEmpty()) {
                     Unos.getStyleClass().add("poljeNijeIspravno");
+                    Unos.setPromptText("Unesite broj");
                 } else {
                     Unos.getStyleClass().removeAll("poljeNijeIspravno");
                 }
