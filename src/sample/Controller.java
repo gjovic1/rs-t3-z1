@@ -46,10 +46,12 @@ public class Controller {
 
     public int print(ActionEvent actionEvent) throws InvocationTargetException {
         try {
+            listaIspis.getItems().clear();
             String n = Unos.getText();
             for (int i = 1; i < Integer.parseInt(n); i++)
                 if (i % sumaCifara(i) == 0)
                     listaIspis.getItems().add(i);
+
         } catch (NumberFormatException e) {
             return 0;
         }
